@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityTwo"
+    android:background="#A0A371">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="251dp"
+        android:layout_height="35dp"
+        android:layout_marginRight="80dp"
+        android:width="300dp"
+        android:text="Посчитай результат"
+        android:textSize="24sp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="50dp" />
+
+    <EditText
+        android:id="@+id/count1"
+        android:layout_marginTop="40dp"
+        android:layout_width="300dp"
+        android:layout_height="44dp"
+        android:width="300dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Введи первое число"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="121dp"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/count2"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="300dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Введи второе число"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="168dp"
+        android:layout_below="@+id/count1"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnSendToMain"
+        android:layout_width="303dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="49dp"
+        android:width="300dp"
+        android:background="#090808"
+        android:text="Считать"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="263dp"
+        android:layout_below="@+id/count2"
+        android:onClick="sendResult"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txt_result"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:textSize="20sp"
+        android:layout_below="@id/textView2"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        />
+</RelativeLayout>
