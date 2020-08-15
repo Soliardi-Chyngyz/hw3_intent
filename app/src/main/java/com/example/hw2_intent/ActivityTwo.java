@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ActivityTwo extends AppCompatActivity {
 
     public final static String SUPER_KEY = "number";
+    public final static int ACTIVITY_TWO = 100;
 
     public TextView textView2, txtResult;
     private EditText count1, count2;
@@ -73,10 +74,10 @@ public class ActivityTwo extends AppCompatActivity {
     }
 
     public void sendResult(View view) {
-        Intent intent = new Intent(ActivityTwo.this, MainActivity.class);
-        intent.putExtra(MainActivity.SUPER_KEY, txtResult.toString());
-        setResult(RESULT_OK,intent);
-        startActivity(intent);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(SUPER_KEY, "adsadasda");
+        setResult(RESULT_OK, intent);
+        startActivityForResult(intent,ACTIVITY_TWO);
     }
 }
 

@@ -16,7 +16,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:background="#DDD6D6"
-        android:text="Screppy Koko"
         android:textSize="24sp" />
 
     <TextView
