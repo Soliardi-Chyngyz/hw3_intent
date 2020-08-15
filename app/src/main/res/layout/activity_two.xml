@@ -63,7 +63,6 @@
         tools:layout_editor_absoluteX="62dp"
         tools:layout_editor_absoluteY="263dp"
         android:layout_below="@+id/count2"
-        android:onClick="sendResult"
         tools:ignore="MissingConstraints" />
 
     <TextView

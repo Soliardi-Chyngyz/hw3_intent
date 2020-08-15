@@ -3,17 +3,22 @@ package com.example.hw2_intent;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     public final static String SUPER_KEY = "txt";
+    public final static int ACTIVITY_TWO = 100;
 
-    private TextView textView;
+    private TextView textInfo;
     private Button btnSend, btnEmail;
 
     @Override
@@ -27,14 +32,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void getResult() {
         Intent intent = getIntent();
-        if (intent != null){
+        if (intent != null) {
             String number = intent.getStringExtra(SUPER_KEY);
-            textView.setText(number);
+            textInfo.setText(number);
         }
     }
 
-    public void init(){
-        textView = findViewById(R.id.text_view);
+    public void init() {
+        textInfo = findViewById(R.id.textInfo);
         btnSend = findViewById(R.id.btnSend);
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,21 +47,51 @@ public class MainActivity extends AppCompatActivity {
                 getDataIntent();
             }
         });
-        btnEmail = findViewById(R.id.btnEmail);
+        btnEmail = findViewById(R.id.sendEmail);
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendEmail();
+            }
+        });
     }
 
-    public void getDataIntent(){
+    @SuppressLint("LongLogTag")
+    private void sendEmail() {
+        Log.i("Send email", "");
+        String[] TO = {""};
+        String[] CC = {""};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            finish();
+            Log.i("Finished sending email...", "");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(MainActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public void getDataIntent() {
         Intent intent = new Intent(this, ActivityTwo.class);
-        startActivity(intent);
+        startActivityForResult(intent, ACTIVITY_TWO);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 100 && resultCode == RESULT_OK){
+        if (requestCode == 100 && resultCode == RESULT_OK) {
             String text = data.getStringExtra(ActivityTwo.SUPER_KEY);
-            textView.setText(text);
+            textInfo.setText(text);
         }
     }
 }

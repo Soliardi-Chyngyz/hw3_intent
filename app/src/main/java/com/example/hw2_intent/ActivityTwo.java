@@ -1,6 +1,7 @@
 package com.example.hw2_intent;
 
 import android.annotation.SuppressLint;
+import android.content.ContentProviderClient;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -16,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ActivityTwo extends AppCompatActivity {
 
     public final static String SUPER_KEY = "number";
-    public final static int ACTIVITY_TWO = 100;
+
 
     public TextView textView2, txtResult;
     private EditText count1, count2;
@@ -48,7 +49,7 @@ public class ActivityTwo extends AppCompatActivity {
 //                c = a + b;
 //                String S = Double.toString(c);
 //                txtResult.setText(S);
-            }
+                sendResult();            }
         });
     }
 
@@ -73,11 +74,11 @@ public class ActivityTwo extends AppCompatActivity {
         txtResult.setText(savedInstanceState.getString("sum"));
     }
 
-    public void sendResult(View view) {
+    public void sendResult() {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(SUPER_KEY, "adsadasda");
+        intent.putExtra(SUPER_KEY, txtResult.getText().toString());
         setResult(RESULT_OK, intent);
-        startActivityForResult(intent,ACTIVITY_TWO);
+        finish();
     }
 }
 
