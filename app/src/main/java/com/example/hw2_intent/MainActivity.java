@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         init();
-//        getResult();   из-за него приложение выбрасывает едва открыв
+        getResult();
     }
 
     private void getResult() {
         Intent intent = getIntent();
         if (intent != null){
-            int number = intent.getIntExtra("Результат", Integer.parseInt(SUPER_KEY));
+            String number = intent.getStringExtra(SUPER_KEY);
             textView.setText(number);
         }
     }

@@ -17,7 +17,7 @@ public class ActivityTwo extends AppCompatActivity {
 
     public final static String SUPER_KEY = "number";
 
-    private TextView textView2, txtResult;
+    public TextView textView2, txtResult;
     private EditText count1, count2;
     private Button btnSendToMain;
     double sum;
@@ -74,7 +74,7 @@ public class ActivityTwo extends AppCompatActivity {
 
     public void sendResult(View view) {
         Intent intent = new Intent(ActivityTwo.this, MainActivity.class);
-        intent.putExtra(SUPER_KEY, (Parcelable) txtResult);
+        intent.putExtra(MainActivity.SUPER_KEY, txtResult.toString());
         setResult(RESULT_OK,intent);
         startActivity(intent);
     }
